@@ -3,9 +3,13 @@ package Tests;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import Appointment.Appointment;
 import Services.AppointmentService;
 
 public class AppointmentServiceTest {
@@ -22,8 +26,10 @@ public class AppointmentServiceTest {
     @Test
     public void testAddAppointment() {
         appointmentService.addAppointment("1",date, "Description 1");
-        assertEquals("1", appointmentService.appointments.get(0).getId());
-        assertEquals("Description 1", appointmentService.appointments.get(0).getDescription());
+        Appointment app = appointmentService.appointments.get("1");
+        assertEquals("1", app.getId());
+        assertEquals(date,app.getDate());
+        assertEquals("Description 1", app.getDescription());
     }
     
     @Test

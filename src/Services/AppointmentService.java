@@ -1,35 +1,34 @@
 package Services;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import Appointment.Appointment;
 
 public class AppointmentService {
-	public List<Appointment> appointments = new ArrayList<>();
+	
+	public Map<String,Appointment> appointments = new HashMap<>();
 
 	public void addAppointment(String id, Date date, String desc) {
 		try {
-			for (Appointment appointment : appointments) {
-				if (appointment.getId().equals(id)) {
-					throw new Exception();
-				}
+			if(appointments.containsKey(id)) {
+				throw new Exception();
+			}else {
+				Appointment app = new Appointment(id,date,desc);
+				appointments.put(app.getId(), app);
 			}
-			appointments.add(new Appointment(id,date, desc));
-			System.out.println("Added appointment with id " + id);
 		} catch (Exception e) {
 			System.out.println("Appoint with id " + id + " already exists");
 		}
 	}
 
 	public void deleteAppointment(String id) {
-		for (Appointment appointment : appointments) {
-			if (appointment.getId().equals(id)) {
-				appointments.remove(appointment);
-				System.out.println("Removed appointment with id " + id);
-				break;
-			}
+		if(appointments.containsKey(id)) {
+			appointments.remove(id);
+			System.out.println("Removed appointment with id " + id);
+		}else {
+			System.out.println("Appointment with id " + id + " does not exist");
 		}
 	}
 }
