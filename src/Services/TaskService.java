@@ -1,41 +1,55 @@
 package Services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Task.Task;
 
 public class TaskService {
-	public List<Task> taskList = new ArrayList<>();
+	public Map<String, Task> tasks = new HashMap<>();
 	
 	public void addTask(String id, String name, String desc) throws Exception {
-		for(Task task:taskList) {
-			if(task.getTaskId().equals(id)) {
-				throw new Exception("Duplicate Ids");
+		try {
+			if(tasks.containsKey(id)) {
+				throw new Exception();
+			}else {
+				Task task = new Task(id,name,desc);
+				tasks.put(id, task);
+				System.out.println("Added task with id: "+ task.getTaskId());
 			}
+		}catch(Exception e){
+			System.out.println("Duplicate task exists");
+			throw new Exception();
 		}
-		Task task = new Task(id,name,desc);
-		taskList.add(task);
-		System.out.println("Added task with id: "+ task.getTaskId());
 	}
 	
 	public void deleteTask(String id) {
-		for(Task task: taskList) {
-			if(task.getTaskId().equals(id)) {
-				taskList.remove(task);
-				System.out.println("Removed task with id "+ task.getTaskId());
-				break;
+		try {
+			if(tasks.containsKey(id)) {
+				tasks.remove(id);
+				System.out.println("Removed task with id "+ id);
+			}else {
+				throw new Exception();
 			}
+		}catch(Exception e){
+			System.out.println("Task not found");
 		}
 	}
 	
 	public void updateTask(String id, String name, String desc) {
-		for(Task task:taskList) {
-			if(task.getTaskId().equals(id)){
+		try {
+			if(tasks.containsKey(id)) {
+				Task task = tasks.get(id);
 				task.setTaskName(name);
 				task.setTaskDescriptin(desc);
-				break;
+				tasks.put(id, task);
+			}else {
+				throw new Exception();
 			}
+		}catch(Exception e) {
+			System.out.println("Task not found");
 		}
 	}
 }
