@@ -24,10 +24,14 @@ public class AppointmentService {
 	}
 
 	public void deleteAppointment(String id) {
-		if(appointments.containsKey(id)) {
-			appointments.remove(id);
-			System.out.println("Removed appointment with id " + id);
-		}else {
+		try {
+			if(appointments.containsKey(id)) {
+				appointments.remove(id);
+				System.out.println("Removed appointment with id " + id);
+			}else {
+				throw new Exception();
+			}
+		}catch(Exception e) {
 			System.out.println("Appointment with id " + id + " does not exist");
 		}
 	}
