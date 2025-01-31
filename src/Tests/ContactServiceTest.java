@@ -37,6 +37,16 @@ public class ContactServiceTest {
         contactService.deleteContact("619");
         assertTrue(contactService.contacts.isEmpty());
     }
+    
+    @Test(expected = Exception.class)
+    public void testNonExistentDelete() throws Exception{
+    	contactService.deleteContact("87198718927");
+    }
+    
+    @Test(expected = Exception.class)
+    public void testNonExistentUpdate() throws Exception{
+    	contactService.updateContact("619","Dominick","Mysterio","0987654321","619 DirtyDom Lane");
+    }
 
     @Test
     public void testUpdateContact() throws Exception {

@@ -16,8 +16,8 @@ public class TaskServiceTest {
     @Test
     public void testAddTask() throws Exception {
         taskService.addTask("1", "TaskName", "TaskDescription");
-        assertEquals(1, taskService.taskList.size());
-        assertEquals("1", taskService.taskList.get(0).getTaskId());
+        assertEquals(1, taskService.tasks.size());
+        assertEquals("1", taskService.tasks.get("1").getTaskId());
     }
 
     @Test(expected = Exception.class)
@@ -30,15 +30,15 @@ public class TaskServiceTest {
     public void testDeleteTask() throws Exception {
         taskService.addTask("1", "TaskName", "TaskDescription");
         taskService.deleteTask("1");
-        assertEquals(0, taskService.taskList.size());
+        assertEquals(0, taskService.tasks.size());
     }
 
     @Test
     public void testUpdateTask() throws Exception {
         taskService.addTask("1", "TaskName", "TaskDescription");
         taskService.updateTask("1", "Name", "Description");
-        assertEquals("Name", taskService.taskList.get(0).getTaskName());
-        assertEquals("Description", taskService.taskList.get(0).getTaskDescription());
+        assertEquals("Name", taskService.tasks.get("1").getTaskName());
+        assertEquals("Description", taskService.tasks.get("1").getTaskDescription());
     }
 
 }

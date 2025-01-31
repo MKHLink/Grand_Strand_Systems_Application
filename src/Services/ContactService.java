@@ -24,7 +24,7 @@ public class ContactService{
     	
     }    
     
-    public void deleteContact(String id){
+    public void deleteContact(String id) throws Exception{
     	try {
     		if(contacts.containsKey(id)) {
     			contacts.remove(id);
@@ -34,10 +34,11 @@ public class ContactService{
     		}
     	}catch(Exception e) {
     		System.out.println("No contact found with id: "+ id);
+    		throw new Exception();
     	}
     }
 
-    public void updateContact(String id, String firstName, String lastName, String phone, String address){
+    public void updateContact(String id, String firstName, String lastName, String phone, String address) throws Exception{
     	try {
     		if(contacts.containsKey(id)) {
         		Contact contact = new Contact(id,firstName,lastName,phone,address);
@@ -48,6 +49,7 @@ public class ContactService{
         	}
     	}catch(Exception e) {
     		System.out.println("Contact with id: "+id+" does not exist");
+    		throw new Exception();
     	}
     }
 }
