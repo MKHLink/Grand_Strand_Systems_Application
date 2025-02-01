@@ -10,6 +10,7 @@ public class AppointmentService {
 	
 	public Map<String,Appointment> appointments = new HashMap<>();
 
+	//adds an appointment if no matching id is found
 	public void addAppointment(String id, Date date, String desc) {
 		try {
 			if(appointments.containsKey(id)) {
@@ -23,6 +24,7 @@ public class AppointmentService {
 		}
 	}
 
+	//deletes an appointment based on its id
 	public void deleteAppointment(String id) {
 		try {
 			if(appointments.containsKey(id)) {

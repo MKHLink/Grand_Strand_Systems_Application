@@ -10,6 +10,7 @@ import Task.Task;
 public class TaskService {
 	public Map<String, Task> tasks = new HashMap<>();
 	
+	//adds an task if no matching id is found
 	public void addTask(String id, String name, String desc) throws Exception {
 		try {
 			if(tasks.containsKey(id)) {
@@ -25,6 +26,7 @@ public class TaskService {
 		}
 	}
 	
+	//deletes a task based on its id
 	public void deleteTask(String id) {
 		try {
 			if(tasks.containsKey(id)) {
@@ -38,6 +40,7 @@ public class TaskService {
 		}
 	}
 	
+	//updates a tasks based on its id
 	public void updateTask(String id, String name, String desc) {
 		try {
 			if(tasks.containsKey(id)) {

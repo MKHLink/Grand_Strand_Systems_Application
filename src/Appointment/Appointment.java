@@ -9,6 +9,7 @@ public class Appointment {
 	private Date date;
 	private String description;
 	
+	//constructor
 	public Appointment(String id, Date date, String desc) {
 		Checker.dataChecker(id);
 		this.id = id;
@@ -18,6 +19,7 @@ public class Appointment {
 		this.description = desc;
 	}
 	
+	//getters and setters
 	public String getId() {
 		return this.id;
 	}

@@ -9,6 +9,7 @@ public class Contact{
     private String phoneNumber;
     private String contactAddress;
 
+  //constructor
     public Contact(String id, String first, String last, String phone, String address){
         Checker.dataChecker(id);
         this.contactId = id;
@@ -22,6 +23,7 @@ public class Contact{
         this.contactAddress = address;
     }
 
+  //getters and setters
     public String getContactId() {
         return this.contactId;
     }
