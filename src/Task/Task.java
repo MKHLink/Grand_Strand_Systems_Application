@@ -7,6 +7,7 @@ public class Task {
 	private String name;
 	private String description;
 	
+	//constructor
 	public Task(String id, String name, String desc) {
 		Checker.dataChecker(id);
 		this.taskId = id;
@@ -16,6 +17,7 @@ public class Task {
 		this.description = desc;
 	}
 	
+	//getters and setters
 	public String getTaskId() {
 		return this.taskId;
 	}

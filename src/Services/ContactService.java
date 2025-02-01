@@ -8,6 +8,7 @@ import Contact.Contact;
 public class ContactService{
 	public Map<String, Contact> contacts = new HashMap<>();
 
+	//adds a contact if no matching id is found
     public void addContact(String id, String firstName, String lastName, String phone, String address) throws Exception{
     	try {
     		if(contacts.containsKey(id)) {
@@ -24,6 +25,7 @@ public class ContactService{
     	
     }    
     
+  //deletes a contact based on its id
     public void deleteContact(String id) throws Exception{
     	try {
     		if(contacts.containsKey(id)) {
@@ -38,6 +40,7 @@ public class ContactService{
     	}
     }
 
+    //updates contact based on its id
     public void updateContact(String id, String firstName, String lastName, String phone, String address) throws Exception{
     	try {
     		if(contacts.containsKey(id)) {

@@ -2,6 +2,7 @@ package Util;
 
 import java.util.Date;
 
+//this class provides utility methods that checks for data integrity
 public class Checker {
 	 public static void dataChecker(String data){
 	        if(data.length()>10 || data.equals(null)){
